@@ -1,0 +1,3213 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>예원'S Family Story | 우리 가족의 따스한 이야기</title>
+  <meta name="description" content="서로 사랑(愛)하면서, 아름답고(美), 착하게(善) 살아가는 우리 가족의 소중한 이야기">
+  
+  <!-- 웹 폰트 (Pretendard & Gowun Batang) -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&family=Gowun+Dodum&family=MaruBuri:wght@300;400;600&display=swap">
+
+  <!-- Favicon -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🏡</text></svg>">
+
+  <!-- ===================================================================
+       모든 스타일을 단일 index 파일 내에 완전히 포함 (All-in-One CSS)
+       =================================================================== -->
+  <style>
+    :root {
+      /* 기본 파스텔 테마: 웜 피치 & 바닐라 크림 */
+      --bg-primary: #fdfbf7;
+      --bg-secondary: #fbf7f0;
+      --bg-card: rgba(255, 255, 255, 0.88);
+      --bg-card-hover: rgba(255, 255, 255, 0.98);
+      
+      --color-primary: #e07a5f;
+      --color-primary-soft: #f4a261;
+      --color-primary-light: #fef1e8;
+      --color-secondary: #81b29a;
+      --color-secondary-light: #eaf3ee;
+      --color-accent: #f2cc8f;
+      
+      --text-main: #3d405b;
+      --text-muted: #6c757d;
+      --text-light: #8e949d;
+      --border-soft: rgba(224, 122, 95, 0.18);
+      --border-card: rgba(255, 255, 255, 0.8);
+      
+      --shadow-sm: 0 4px 12px rgba(61, 64, 91, 0.04);
+      --shadow-md: 0 10px 25px rgba(61, 64, 91, 0.07);
+      --shadow-lg: 0 18px 45px rgba(61, 64, 91, 0.1);
+      --shadow-glow: 0 0 25px rgba(244, 162, 97, 0.25);
+      
+      --font-serif: 'Gowun Batang', 'MaruBuri', 'Batang', Georgia, serif;
+      --font-sans: 'Pretendard', 'Gowun Dodum', -apple-system, BlinkMacSystemFont, 'Malgun Gothic', sans-serif;
+      
+      --radius-sm: 12px;
+      --radius-md: 20px;
+      --radius-lg: 28px;
+      --radius-full: 9999px;
+      
+      --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    }
+
+    /* 파스텔 테마 프리셋 */
+    body[data-theme="spring-pink"] {
+      --bg-primary: #fff7f8;
+      --bg-secondary: #fdeef1;
+      --color-primary: #e56b82;
+      --color-primary-soft: #f7a1b0;
+      --color-primary-light: #fdf0f3;
+      --color-secondary: #90be6d;
+      --color-secondary-light: #f0f7ec;
+      --border-soft: rgba(229, 107, 130, 0.18);
+    }
+
+    body[data-theme="sage-green"] {
+      --bg-primary: #f6f8f5;
+      --bg-secondary: #ecf1ea;
+      --color-primary: #609966;
+      --color-primary-soft: #9dc08b;
+      --color-primary-light: #edf1e4;
+      --color-secondary: #d4a373;
+      --color-secondary-light: #f8f4ee;
+      --border-soft: rgba(96, 153, 102, 0.18);
+    }
+
+    body[data-theme="soft-lavender"] {
+      --bg-primary: #f9f8fc;
+      --bg-secondary: #f2eef8;
+      --color-primary: #8a79a8;
+      --color-primary-soft: #b6a7d0;
+      --color-primary-light: #f4f0fa;
+      --color-secondary: #e09f87;
+      --color-secondary-light: #fbf1ed;
+      --border-soft: rgba(138, 121, 168, 0.18);
+    }
+
+    /* 리셋 & 기본 설정 */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      font-size: 16px;
+    }
+
+    body {
+      font-family: var(--font-sans);
+      background-color: var(--bg-primary);
+      color: var(--text-main);
+      line-height: 1.75;
+      overflow-x: hidden;
+      position: relative;
+      transition: background-color 0.5s ease;
+    }
+
+    /* 벚꽃 꽃잎 떨어지는 감성 캔버스 배경 */
+    #petals-canvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      pointer-events: none;
+      z-index: 10;
+    }
+
+    /* 네비게이션 바 */
+    .header-nav {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: rgba(253, 251, 247, 0.92);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--border-soft);
+      transition: var(--transition);
+    }
+
+    .nav-container {
+      max-width: 1240px;
+      margin: 0 auto;
+      padding: 0.9rem 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .brand-logo {
+      display: flex;
+      align-items: center;
+      gap: 0.7rem;
+      text-decoration: none;
+      color: var(--text-main);
+    }
+
+    .brand-icon {
+      width: 44px;
+      height: 44px;
+      background: linear-gradient(135deg, var(--color-primary-light), var(--color-accent));
+      border-radius: var(--radius-full);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.4rem;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .brand-text h1 {
+      font-family: var(--font-serif);
+      font-size: 1.35rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      color: var(--text-main);
+    }
+
+    .brand-text span {
+      font-size: 0.75rem;
+      color: var(--color-primary);
+      font-weight: 600;
+      display: block;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+
+    .nav-menu {
+      display: flex;
+      list-style: none;
+      gap: 0.4rem;
+      align-items: center;
+    }
+
+    .nav-menu a {
+      text-decoration: none;
+      color: var(--text-main);
+      font-size: 0.95rem;
+      font-weight: 500;
+      padding: 0.5rem 0.9rem;
+      border-radius: var(--radius-full);
+      transition: var(--transition);
+    }
+
+    .nav-menu a:hover, .nav-menu a.active {
+      background: var(--color-primary-light);
+      color: var(--color-primary);
+    }
+
+    .nav-controls {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+
+    .theme-select {
+      background: var(--bg-card);
+      border: 1px solid var(--border-soft);
+      color: var(--text-main);
+      padding: 0.45rem 0.8rem;
+      border-radius: var(--radius-full);
+      font-size: 0.85rem;
+      cursor: pointer;
+      font-family: var(--font-sans);
+      outline: none;
+      transition: var(--transition);
+    }
+
+    .theme-select:hover {
+      border-color: var(--color-primary);
+    }
+
+    .menu-toggle {
+      display: none;
+      background: none;
+      border: none;
+      font-size: 1.5rem;
+      color: var(--text-main);
+      cursor: pointer;
+    }
+
+    /* 레이아웃 컨테이너 */
+    .container {
+      max-width: 1240px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+
+    .section {
+      padding: 5.5rem 0;
+      position: relative;
+    }
+
+    .section-header {
+      text-align: center;
+      margin-bottom: 3.5rem;
+    }
+
+    .section-tag {
+      display: inline-block;
+      padding: 0.35rem 1.1rem;
+      background: var(--color-primary-light);
+      color: var(--color-primary);
+      border-radius: var(--radius-full);
+      font-size: 0.85rem;
+      font-weight: 600;
+      margin-bottom: 0.8rem;
+      letter-spacing: 0.05em;
+    }
+
+    .section-title {
+      font-family: var(--font-serif);
+      font-size: 2.3rem;
+      font-weight: 700;
+      color: var(--text-main);
+      margin-bottom: 0.8rem;
+      letter-spacing: -0.02em;
+    }
+
+    .section-desc {
+      font-size: 1.05rem;
+      color: var(--text-muted);
+      max-width: 620px;
+      margin: 0 auto;
+      word-break: keep-all;
+    }
+
+    /* 1. 메인 히어로 섹션 */
+    .hero-section {
+      padding: 3rem 0 5rem;
+      overflow: hidden;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 3.2rem;
+      align-items: center;
+    }
+
+    .hero-visual-card {
+      position: relative;
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      box-shadow: var(--shadow-lg);
+      border: 5px solid #fff;
+      transition: transform 0.4s ease;
+      background: #f0ede6;
+    }
+
+    .hero-visual-card:hover {
+      transform: translateY(-4px);
+    }
+
+    .hero-visual-card img {
+      width: 100%;
+      height: 480px;
+      object-fit: cover;
+      display: block;
+    }
+
+    .hero-badge-overlay {
+      position: absolute;
+      bottom: 1.2rem;
+      left: 1.2rem;
+      right: 1.2rem;
+      background: rgba(255, 255, 255, 0.93);
+      backdrop-filter: blur(10px);
+      padding: 1rem 1.4rem;
+      border-radius: var(--radius-md);
+      border: 1px solid rgba(255, 255, 255, 0.8);
+      box-shadow: var(--shadow-md);
+    }
+
+    .hero-badge-overlay h4 {
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--text-main);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .hero-badge-overlay p {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-top: 0.2rem;
+    }
+
+    .hero-content {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    .welcome-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.4rem 1.1rem;
+      background: var(--color-secondary-light);
+      color: var(--color-secondary);
+      border-radius: var(--radius-full);
+      font-size: 0.9rem;
+      font-weight: 600;
+      width: fit-content;
+    }
+
+    .hero-title {
+      font-family: var(--font-serif);
+      font-size: 3.2rem;
+      line-height: 1.25;
+      color: var(--text-main);
+      letter-spacing: -0.03em;
+    }
+
+    .hero-title .highlight {
+      color: var(--color-primary);
+      position: relative;
+      display: inline-block;
+    }
+
+    .hero-title .highlight::after {
+      content: '';
+      position: absolute;
+      bottom: 8px;
+      left: 0;
+      width: 100%;
+      height: 14px;
+      background: var(--color-accent);
+      opacity: 0.4;
+      z-index: -1;
+      border-radius: 4px;
+    }
+
+    .hero-subtitle {
+      font-size: 1.15rem;
+      color: var(--text-muted);
+      word-break: keep-all;
+      line-height: 1.8;
+    }
+
+    .motto-card {
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(254, 241, 232, 0.9));
+      border: 2px dashed var(--color-primary-soft);
+      border-radius: var(--radius-md);
+      padding: 1.6rem 2rem;
+      position: relative;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .motto-tag {
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: var(--color-primary);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .motto-quote {
+      font-family: var(--font-serif);
+      font-size: 1.35rem;
+      font-weight: 700;
+      color: var(--text-main);
+      line-height: 1.6;
+    }
+
+    .motto-hanja {
+      display: flex;
+      gap: 1rem;
+      margin-top: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .hanja-item {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      background: #fff;
+      padding: 0.35rem 0.85rem;
+      border-radius: var(--radius-full);
+      font-size: 0.9rem;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.04);
+    }
+
+    .hanja-item strong {
+      color: var(--color-primary);
+      font-family: var(--font-serif);
+      font-size: 1.1rem;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 1rem;
+      margin-top: 0.5rem;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.85rem 1.8rem;
+      border-radius: var(--radius-full);
+      font-size: 1rem;
+      font-weight: 600;
+      text-decoration: none;
+      cursor: pointer;
+      transition: var(--transition);
+      border: none;
+      outline: none;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--color-primary), var(--color-primary-soft));
+      color: #fff;
+      box-shadow: 0 6px 18px rgba(224, 122, 95, 0.3);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 24px rgba(224, 122, 95, 0.4);
+    }
+
+    .btn-secondary {
+      background: var(--bg-card);
+      color: var(--text-main);
+      border: 1px solid var(--border-soft);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .btn-secondary:hover {
+      background: #fff;
+      color: var(--color-primary);
+      border-color: var(--color-primary);
+    }
+
+    /* 2. 가족 소개 섹션 */
+    .members-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2.2rem;
+    }
+
+    .member-card {
+      background: var(--bg-card);
+      border-radius: var(--radius-lg);
+      padding: 2.4rem 2rem 2rem;
+      border: 1px solid var(--border-card);
+      box-shadow: var(--shadow-md);
+      position: relative;
+      transition: var(--transition);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+
+    .member-card:hover {
+      transform: translateY(-6px);
+      box-shadow: var(--shadow-lg);
+      background: var(--bg-card-hover);
+    }
+
+    .member-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 6px;
+      border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+    }
+
+    .member-card.father::before { background: linear-gradient(90deg, #6a85b6, #bac8e0); }
+    .member-card.mother::before { background: linear-gradient(90deg, #f7a1b0, #fbc5d8); }
+    .member-card.daughter::before { background: linear-gradient(90deg, #f4a261, #fbd5a9); }
+
+    .avatar-wrapper {
+      position: relative;
+      width: 180px;
+      height: 180px;
+      margin-bottom: 1.5rem;
+    }
+
+    .avatar-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: var(--radius-full);
+      border: 4px solid #fff;
+      box-shadow: var(--shadow-md);
+      transition: transform 0.3s ease;
+      background: #eae6df;
+    }
+
+    .avatar-wrapper:hover .avatar-img {
+      transform: scale(1.03);
+    }
+
+    .avatar-badge {
+      position: absolute;
+      bottom: 6px;
+      right: 6px;
+      background: #fff;
+      width: 38px;
+      height: 38px;
+      border-radius: var(--radius-full);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+      box-shadow: var(--shadow-sm);
+      border: 2px solid var(--bg-primary);
+    }
+
+    .photo-change-btn {
+      position: absolute;
+      top: 6px;
+      right: 6px;
+      background: rgba(255, 255, 255, 0.92);
+      border: 1px solid var(--border-soft);
+      width: 36px;
+      height: 36px;
+      border-radius: var(--radius-full);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1rem;
+      color: var(--text-main);
+      box-shadow: var(--shadow-sm);
+      transition: var(--transition);
+    }
+
+    .photo-change-btn:hover {
+      background: var(--color-primary);
+      color: #fff;
+      transform: scale(1.1);
+    }
+
+    .member-role {
+      display: inline-block;
+      padding: 0.25rem 0.9rem;
+      border-radius: var(--radius-full);
+      font-size: 0.82rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+    }
+
+    .member-card.father .member-role { background: #eef3f9; color: #4a6fa5; }
+    .member-card.mother .member-role { background: #fef0f2; color: #d65a78; }
+    .member-card.daughter .member-role { background: #fef5ee; color: #e76f51; }
+
+    .member-name {
+      font-family: var(--font-serif);
+      font-size: 1.75rem;
+      font-weight: 700;
+      color: var(--text-main);
+      margin-bottom: 0.3rem;
+    }
+
+    .member-summary {
+      font-size: 0.94rem;
+      color: var(--color-primary);
+      font-weight: 600;
+      margin-bottom: 1rem;
+    }
+
+    .member-desc {
+      font-size: 0.92rem;
+      color: var(--text-muted);
+      line-height: 1.7;
+      margin-bottom: 1.4rem;
+      word-break: keep-all;
+    }
+
+    .member-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      justify-content: center;
+      margin-bottom: 1.4rem;
+    }
+
+    .member-tags span {
+      font-size: 0.78rem;
+      background: #fff;
+      border: 1px solid rgba(0, 0, 0, 0.06);
+      padding: 0.25rem 0.65rem;
+      border-radius: var(--radius-full);
+      color: var(--text-muted);
+    }
+
+    .birthday-box {
+      width: 100%;
+      background: #fff;
+      border-radius: var(--radius-md);
+      padding: 1rem 1.2rem;
+      border: 1px dashed var(--border-soft);
+      margin-top: auto;
+    }
+
+    .bday-date {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .bday-dday {
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: var(--color-primary);
+      background: var(--color-primary-light);
+      padding: 0.2rem 0.65rem;
+      border-radius: var(--radius-full);
+    }
+
+    /* 3. 가족 앨범란 */
+    .album-controls {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 2rem;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .filter-group {
+      display: flex;
+      gap: 0.5rem;
+      background: rgba(255, 255, 255, 0.75);
+      padding: 0.4rem;
+      border-radius: var(--radius-full);
+      border: 1px solid var(--border-soft);
+    }
+
+    .filter-btn {
+      background: none;
+      border: none;
+      padding: 0.45rem 1.1rem;
+      border-radius: var(--radius-full);
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: var(--text-muted);
+      cursor: pointer;
+      transition: var(--transition);
+    }
+
+    .filter-btn.active, .filter-btn:hover {
+      background: #fff;
+      color: var(--color-primary);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .album-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.8rem;
+    }
+
+    .album-item {
+      background: var(--bg-card);
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      box-shadow: var(--shadow-md);
+      border: 1px solid var(--border-card);
+      transition: var(--transition);
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .album-item:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow-lg);
+    }
+
+    .album-thumb-wrap {
+      position: relative;
+      width: 100%;
+      height: 250px;
+      overflow: hidden;
+      background: #f0ede6;
+    }
+
+    .album-thumb-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+
+    .album-item:hover .album-thumb-wrap img {
+      transform: scale(1.06);
+    }
+
+    .album-category-badge {
+      position: absolute;
+      top: 12px;
+      left: 12px;
+      background: rgba(255, 255, 255, 0.92);
+      backdrop-filter: blur(6px);
+      padding: 0.25rem 0.75rem;
+      border-radius: var(--radius-full);
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: var(--color-primary);
+    }
+
+    .album-info {
+      padding: 1.2rem 1.4rem;
+    }
+
+    .album-date {
+      font-size: 0.8rem;
+      color: var(--text-light);
+      display: block;
+      margin-bottom: 0.3rem;
+    }
+
+    .album-title {
+      font-family: var(--font-serif);
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--text-main);
+      margin-bottom: 0.4rem;
+    }
+
+    .album-caption {
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+
+    /* 4. 가족 여행 페이지 */
+    .travel-timeline {
+      display: flex;
+      flex-direction: column;
+      gap: 2.5rem;
+      position: relative;
+      max-width: 960px;
+      margin: 0 auto;
+    }
+
+    .travel-card {
+      display: grid;
+      grid-template-columns: 360px 1fr;
+      background: var(--bg-card);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      box-shadow: var(--shadow-md);
+      border: 1px solid var(--border-card);
+      transition: var(--transition);
+    }
+
+    .travel-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-lg);
+    }
+
+    .travel-card.reverse {
+      grid-template-columns: 1fr 360px;
+    }
+
+    .travel-card.reverse .travel-img-box {
+      order: 2;
+    }
+
+    .travel-card.reverse .travel-body {
+      order: 1;
+    }
+
+    .travel-img-box {
+      height: 100%;
+      min-height: 260px;
+      background: #ede8df;
+    }
+
+    .travel-img-box img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .travel-body {
+      padding: 2.2rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .travel-place {
+      font-size: 0.85rem;
+      color: var(--color-secondary);
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      margin-bottom: 0.4rem;
+    }
+
+    .travel-title {
+      font-family: var(--font-serif);
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--text-main);
+      margin-bottom: 0.8rem;
+    }
+
+    .travel-desc {
+      font-size: 0.95rem;
+      color: var(--text-muted);
+      line-height: 1.7;
+      margin-bottom: 1.2rem;
+      word-break: keep-all;
+    }
+
+    .travel-tags {
+      display: flex;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+    }
+
+    .travel-tags span {
+      font-size: 0.8rem;
+      background: var(--color-secondary-light);
+      color: var(--color-secondary);
+      padding: 0.25rem 0.75rem;
+      border-radius: var(--radius-full);
+    }
+
+    .travel-bucket {
+      margin-top: 3.5rem;
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(234, 243, 238, 0.7));
+      border-radius: var(--radius-lg);
+      padding: 2.2rem;
+      border: 1px solid var(--border-soft);
+      box-shadow: var(--shadow-sm);
+      max-width: 960px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .bucket-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1.5rem;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .bucket-header h3 {
+      font-family: var(--font-serif);
+      font-size: 1.3rem;
+      color: var(--text-main);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .bucket-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1rem;
+    }
+
+    .bucket-item {
+      background: #fff;
+      padding: 1rem 1.2rem;
+      border-radius: var(--radius-md);
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border: 1px solid rgba(0, 0, 0, 0.05);
+    }
+
+    .bucket-item span {
+      font-size: 0.95rem;
+      font-weight: 500;
+    }
+
+    .bucket-item button {
+      background: none;
+      border: none;
+      color: var(--color-primary);
+      cursor: pointer;
+      font-size: 1.1rem;
+      transition: transform 0.2s ease;
+    }
+
+    .bucket-item button:hover {
+      transform: scale(1.2);
+    }
+
+    /* 5. 가족에게 전하는 편지 섹션 */
+    .letters-section {
+      background: var(--bg-secondary);
+    }
+
+    .letters-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+    }
+
+    .letter-card {
+      background: #fff;
+      border-radius: var(--radius-md);
+      padding: 2.2rem 1.8rem;
+      box-shadow: var(--shadow-md);
+      position: relative;
+      transition: var(--transition);
+      border: 1px solid rgba(0, 0, 0, 0.05);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .letter-card:hover {
+      transform: translateY(-6px);
+      box-shadow: var(--shadow-lg);
+    }
+
+    .letter-envelope-icon {
+      font-size: 2.2rem;
+      margin-bottom: 1rem;
+    }
+
+    .letter-to {
+      font-family: var(--font-serif);
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: var(--text-main);
+      margin-bottom: 0.3rem;
+    }
+
+    .letter-from {
+      font-size: 0.85rem;
+      color: var(--color-primary);
+      font-weight: 600;
+      margin-bottom: 1.2rem;
+    }
+
+    .letter-preview {
+      font-family: var(--font-serif);
+      font-size: 0.95rem;
+      color: var(--text-muted);
+      line-height: 1.8;
+      margin-bottom: 1.5rem;
+      white-space: pre-line;
+      max-height: 180px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .letter-preview::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 45px;
+      background: linear-gradient(transparent, #fff);
+    }
+
+    .letter-footer {
+      margin-top: auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-top: 1px dashed var(--border-soft);
+      padding-top: 1rem;
+    }
+
+    .letter-date {
+      font-size: 0.8rem;
+      color: var(--text-light);
+    }
+
+    .read-more-btn {
+      background: none;
+      border: none;
+      color: var(--color-primary);
+      font-weight: 600;
+      font-size: 0.9rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 0.3rem;
+    }
+
+    .read-more-btn:hover {
+      text-decoration: underline;
+    }
+
+    /* 6. 기념일 & 축하 메시지 */
+    .celebration-grid {
+      display: grid;
+      grid-template-columns: 0.95fr 1.05fr;
+      gap: 2.5rem;
+    }
+
+    .anniversary-card-box {
+      background: var(--bg-card);
+      border-radius: var(--radius-lg);
+      padding: 2.2rem;
+      box-shadow: var(--shadow-md);
+      border: 1px solid var(--border-card);
+    }
+
+    .anniversary-list {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      margin-top: 1.5rem;
+    }
+
+    .anniversary-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1rem 1.2rem;
+      background: #fff;
+      border-radius: var(--radius-md);
+      border: 1px solid rgba(0,0,0,0.05);
+      transition: var(--transition);
+    }
+
+    .anniversary-item:hover {
+      border-color: var(--color-primary-soft);
+      transform: translateX(4px);
+    }
+
+    .anniversary-info {
+      display: flex;
+      align-items: center;
+      gap: 0.9rem;
+    }
+
+    .anniversary-icon {
+      font-size: 1.6rem;
+      width: 44px;
+      height: 44px;
+      background: var(--color-primary-light);
+      border-radius: var(--radius-full);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .anniversary-text h4 {
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--text-main);
+    }
+
+    .anniversary-text p {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+
+    .anniversary-badge {
+      font-size: 0.8rem;
+      font-weight: 700;
+      padding: 0.3rem 0.8rem;
+      border-radius: var(--radius-full);
+      background: var(--color-secondary-light);
+      color: var(--color-secondary);
+    }
+
+    .guestbook-box {
+      background: var(--bg-card);
+      border-radius: var(--radius-lg);
+      padding: 2.2rem;
+      box-shadow: var(--shadow-md);
+      border: 1px solid var(--border-card);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .message-form {
+      background: #fff;
+      border-radius: var(--radius-md);
+      padding: 1.4rem;
+      border: 1px solid var(--border-soft);
+      margin-bottom: 1.5rem;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .form-row {
+      display: flex;
+      gap: 0.8rem;
+      margin-bottom: 0.8rem;
+    }
+
+    .form-input, .form-textarea {
+      width: 100%;
+      padding: 0.75rem 1rem;
+      border: 1px solid var(--border-soft);
+      border-radius: var(--radius-sm);
+      font-family: var(--font-sans);
+      font-size: 0.92rem;
+      outline: none;
+      background: var(--bg-primary);
+      color: var(--text-main);
+      transition: var(--transition);
+    }
+
+    .form-input:focus, .form-textarea:focus {
+      border-color: var(--color-primary);
+      background: #fff;
+      box-shadow: 0 0 0 3px rgba(224, 122, 95, 0.15);
+    }
+
+    .form-textarea {
+      resize: vertical;
+      min-height: 80px;
+    }
+
+    .form-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 0.8rem;
+    }
+
+    .emoji-selector {
+      display: flex;
+      gap: 0.4rem;
+    }
+
+    .emoji-btn {
+      background: none;
+      border: 1px solid transparent;
+      font-size: 1.3rem;
+      cursor: pointer;
+      padding: 0.2rem 0.4rem;
+      border-radius: var(--radius-sm);
+      transition: var(--transition);
+    }
+
+    .emoji-btn.selected, .emoji-btn:hover {
+      background: var(--color-primary-light);
+      border-color: var(--color-primary-soft);
+      transform: scale(1.15);
+    }
+
+    .messages-stream {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      max-height: 480px;
+      overflow-y: auto;
+      padding-right: 0.4rem;
+    }
+
+    .message-note {
+      background: linear-gradient(135deg, #fff, var(--bg-secondary));
+      padding: 1.2rem 1.4rem;
+      border-radius: var(--radius-md);
+      border-left: 4px solid var(--color-primary);
+      box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+      position: relative;
+      transition: var(--transition);
+    }
+
+    .message-note:hover {
+      transform: translateX(3px);
+    }
+
+    .note-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 0.5rem;
+    }
+
+    .note-author {
+      font-weight: 700;
+      font-size: 0.95rem;
+      color: var(--text-main);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .note-time {
+      font-size: 0.78rem;
+      color: var(--text-light);
+    }
+
+    .note-content {
+      font-size: 0.92rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+
+    .note-actions {
+      display: flex;
+      justify-content: flex-end;
+      margin-top: 0.5rem;
+    }
+
+    .like-btn {
+      background: none;
+      border: none;
+      color: var(--color-primary);
+      font-size: 0.85rem;
+      font-weight: 600;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 0.3rem;
+    }
+
+    /* 7. 가족 발자취 타임라인 */
+    .history-section {
+      background: var(--bg-secondary);
+    }
+
+    .history-timeline {
+      position: relative;
+      max-width: 880px;
+      margin: 0 auto;
+      padding: 2rem 0;
+    }
+
+    .history-timeline::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 50%;
+      width: 2px;
+      background: var(--border-soft);
+      transform: translateX(-50%);
+    }
+
+    .history-item {
+      position: relative;
+      margin-bottom: 3rem;
+      width: 50%;
+      padding: 0 2.5rem;
+    }
+
+    .history-item.left {
+      left: 0;
+      text-align: right;
+    }
+
+    .history-item.right {
+      left: 50%;
+      text-align: left;
+    }
+
+    .history-dot {
+      position: absolute;
+      top: 15px;
+      width: 18px;
+      height: 18px;
+      background: var(--color-primary);
+      border: 4px solid #fff;
+      border-radius: var(--radius-full);
+      box-shadow: var(--shadow-sm);
+      z-index: 2;
+    }
+
+    .history-item.left .history-dot {
+      right: -9px;
+    }
+
+    .history-item.right .history-dot {
+      left: -9px;
+    }
+
+    .history-card {
+      background: #fff;
+      padding: 1.5rem 1.8rem;
+      border-radius: var(--radius-md);
+      box-shadow: var(--shadow-md);
+      border: 1px solid rgba(0,0,0,0.04);
+    }
+
+    .history-year {
+      font-family: var(--font-serif);
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--color-primary);
+      margin-bottom: 0.3rem;
+    }
+
+    .history-title {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--text-main);
+      margin-bottom: 0.5rem;
+    }
+
+    .history-desc {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+
+    /* 플로팅 감성 BGM 오디오 플레이어 */
+    .floating-audio-player {
+      position: fixed;
+      bottom: 25px;
+      right: 25px;
+      z-index: 1001;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid var(--border-soft);
+      border-radius: var(--radius-full);
+      padding: 0.6rem 1.2rem;
+      display: flex;
+      align-items: center;
+      gap: 0.9rem;
+      box-shadow: var(--shadow-lg);
+      transition: var(--transition);
+    }
+
+    .floating-audio-player:hover {
+      box-shadow: var(--shadow-glow), var(--shadow-lg);
+    }
+
+    .vinyl-disc {
+      width: 42px;
+      height: 42px;
+      background: #2b2d42;
+      border-radius: var(--radius-full);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+      transition: transform 0.3s ease;
+    }
+
+    .vinyl-disc::before {
+      content: '';
+      width: 14px;
+      height: 14px;
+      background: #fff;
+      border-radius: var(--radius-full);
+      border: 3px solid var(--color-primary);
+    }
+
+    .floating-audio-player.playing .vinyl-disc {
+      animation: spin 4s linear infinite;
+    }
+
+    @keyframes spin {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+
+    .player-info {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .player-title {
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: var(--text-main);
+      max-width: 140px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .player-status {
+      font-size: 0.72rem;
+      color: var(--color-primary);
+      font-weight: 500;
+    }
+
+    .player-controls {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .play-toggle-btn {
+      background: linear-gradient(135deg, var(--color-primary), var(--color-primary-soft));
+      color: #fff;
+      border: none;
+      width: 36px;
+      height: 36px;
+      border-radius: var(--radius-full);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1rem;
+      cursor: pointer;
+      box-shadow: 0 4px 10px rgba(224, 122, 95, 0.3);
+      transition: var(--transition);
+    }
+
+    .play-toggle-btn:hover {
+      transform: scale(1.08);
+    }
+
+    .volume-slider {
+      width: 70px;
+      accent-color: var(--color-primary);
+      cursor: pointer;
+    }
+
+    /* 모달 공통 스타일 */
+    .modal-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(30, 32, 45, 0.45);
+      backdrop-filter: blur(8px);
+      z-index: 2000;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 1.5rem;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .modal-overlay.active {
+      display: flex;
+      opacity: 1;
+    }
+
+    .modal-content {
+      background: #fff;
+      border-radius: var(--radius-lg);
+      max-width: 620px;
+      width: 100%;
+      max-height: 90vh;
+      overflow-y: auto;
+      box-shadow: var(--shadow-lg);
+      padding: 2.2rem;
+      position: relative;
+      transform: translateY(20px);
+      transition: transform 0.3s ease;
+    }
+
+    .modal-overlay.active .modal-content {
+      transform: translateY(0);
+    }
+
+    .modal-close-btn {
+      position: absolute;
+      top: 1.2rem;
+      right: 1.2rem;
+      background: var(--bg-primary);
+      border: none;
+      font-size: 1.4rem;
+      width: 36px;
+      height: 36px;
+      border-radius: var(--radius-full);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--text-muted);
+      transition: var(--transition);
+    }
+
+    .modal-close-btn:hover {
+      background: var(--color-primary-light);
+      color: var(--color-primary);
+    }
+
+    .lightbox-modal .modal-content {
+      max-width: 900px;
+      padding: 1.2rem;
+      background: rgba(255, 255, 255, 0.98);
+    }
+
+    .lightbox-img {
+      width: 100%;
+      max-height: 70vh;
+      object-fit: contain;
+      border-radius: var(--radius-md);
+      background: #f4f1ea;
+    }
+
+    .lightbox-caption-box {
+      padding: 1rem 0.5rem 0.5rem;
+    }
+
+    /* 푸터 */
+    .footer {
+      background: #2b2d42;
+      color: #f4f4f6;
+      padding: 4.5rem 0 2.5rem;
+      text-align: center;
+    }
+
+    .footer-brand {
+      font-family: var(--font-serif);
+      font-size: 1.8rem;
+      font-weight: 700;
+      margin-bottom: 0.8rem;
+    }
+
+    .footer-motto {
+      font-family: var(--font-serif);
+      font-size: 1.1rem;
+      color: var(--color-accent);
+      margin-bottom: 2rem;
+    }
+
+    .footer-family-names {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      margin-bottom: 2.5rem;
+      flex-wrap: wrap;
+    }
+
+    .footer-name-pill {
+      background: rgba(255, 255, 255, 0.1);
+      padding: 0.5rem 1.4rem;
+      border-radius: var(--radius-full);
+      font-size: 0.95rem;
+    }
+
+    .footer-copy {
+      font-size: 0.85rem;
+      color: rgba(255, 255, 255, 0.5);
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      padding-top: 2rem;
+    }
+
+    /* 반응형 스타일 */
+    @media (max-width: 1024px) {
+      .hero-grid {
+        grid-template-columns: 1fr;
+        gap: 2.5rem;
+      }
+      .hero-visual-card img {
+        height: 380px;
+      }
+      .members-grid {
+        grid-template-columns: 1fr;
+        max-width: 500px;
+        margin: 0 auto;
+      }
+      .album-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .letters-grid {
+        grid-template-columns: 1fr;
+        max-width: 520px;
+        margin: 0 auto;
+      }
+      .celebration-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .nav-menu {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: #fff;
+        flex-direction: column;
+        padding: 1.5rem;
+        box-shadow: var(--shadow-lg);
+      }
+      .nav-menu.open {
+        display: flex;
+      }
+      .menu-toggle {
+        display: block;
+      }
+      .hero-title {
+        font-size: 2.3rem;
+      }
+      .travel-card, .travel-card.reverse {
+        grid-template-columns: 1fr;
+      }
+      .travel-card.reverse .travel-img-box {
+        order: 1;
+      }
+      .travel-card.reverse .travel-body {
+        order: 2;
+      }
+      .album-grid {
+        grid-template-columns: 1fr;
+      }
+      .history-timeline::before {
+        left: 20px;
+      }
+      .history-item {
+        width: 100%;
+        left: 0 !important;
+        padding-left: 50px;
+        padding-right: 0;
+        text-align: left !important;
+      }
+      .history-dot {
+        left: 11px !important;
+        right: auto !important;
+      }
+      .floating-audio-player {
+        bottom: 15px;
+        right: 15px;
+        padding: 0.5rem 0.9rem;
+      }
+      .player-title {
+        max-width: 100px;
+      }
+    }
+  </style>
+</head>
+<body data-theme="warm-peach">
+
+  <!-- 벚꽃 꽃잎 떨어지는 감성 배경 캔버스 -->
+  <canvas id="petals-canvas"></canvas>
+
+  <!-- 상단 네비게이션 바 -->
+  <header class="header-nav">
+    <div class="nav-container">
+      <a href="#home" class="brand-logo">
+        <div class="brand-icon">🌸</div>
+        <div class="brand-text">
+          <h1>예원'S Family Story</h1>
+          <span>Love · Beauty · Goodness</span>
+        </div>
+      </a>
+
+      <nav>
+        <ul class="nav-menu" id="nav-menu">
+          <li><a href="#home" class="active">홈</a></li>
+          <li><a href="#family">가족 소개</a></li>
+          <li><a href="#album">가족 앨범</a></li>
+          <li><a href="#travel">가족 여행</a></li>
+          <li><a href="#letters">가족 편지함</a></li>
+          <li><a href="#celebration">기념일 & 축하</a></li>
+          <li><a href="#history">가족 발자취</a></li>
+        </ul>
+      </nav>
+
+      <div class="nav-controls">
+        <select class="theme-select" id="theme-select" title="파스텔 테마 변경">
+          <option value="warm-peach">🌾 웜 피치 바닐라</option>
+          <option value="spring-pink">🌸 봄날 벚꽃 핑크</option>
+          <option value="sage-green">🍃 싱그런 세이지</option>
+          <option value="soft-lavender">🪻 차분한 라벤더</option>
+        </select>
+        <button class="menu-toggle" id="menu-toggle" aria-label="메뉴 열기">☰</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ===================================================================
+       1. 메인 히어로 섹션
+       =================================================================== -->
+  <section class="section hero-section" id="home">
+    <div class="container">
+      <div class="hero-grid">
+        <!-- 알프스 100평 한옥 & 제네시스 GV70 & 봄날 티타임 일러스트 -->
+        <div class="hero-visual-card">
+          <img src="assets/images/hero.jpg" alt="알프스 산자락 한옥과 제네시스 GV70, 봄날 정원에서 차 한잔하는 세 가족" loading="eager">
+          <div class="hero-badge-overlay">
+            <h4>🌿 알프스 산자락 아래 100평 한옥의 봄날</h4>
+            <p>푸른 정원과 수영장, 현대 제네시스 GV70, 그리고 따스한 차 한 잔을 나누는 세 가족의 행복한 오후</p>
+          </div>
+        </div>
+
+        <!-- 환영사 및 가훈 카드 -->
+        <div class="hero-content">
+          <div class="welcome-label">
+            <span>✨</span> 우리 집의 영원한 보금자리
+          </div>
+
+          <h2 class="hero-title">
+            함께여서 눈부신<br>
+            <span class="highlight">우리 세 가족의 이야기</span>
+          </h2>
+
+          <p class="hero-subtitle">
+            36년간 헌신하신 자상한 아빠, 신사임당 같은 사랑 가득한 엄마,
+            그리고 우리 집의 가장 큰 보물인 IBK 은행원 딸 예원이가
+            함께 써 내려가는 따뜻하고 온화한 가족의 기록입니다.
+          </p>
+
+          <!-- 가훈 카드 -->
+          <div class="motto-card">
+            <div class="motto-tag">
+              <span>🕊️</span> 우리 집 가훈 (Family Motto)
+            </div>
+            <div class="motto-quote">
+              "우리 집은 서로 사랑(愛) 하면서,<br>
+              아름답고(美), 착하게(善) 살아요."
+            </div>
+            <div class="motto-hanja">
+              <div class="hanja-item">
+                <strong>愛</strong> 사랑 애
+              </div>
+              <div class="hanja-item">
+                <strong>美</strong> 아름다울 미
+              </div>
+              <div class="hanja-item">
+                <strong>善</strong> 착할 선
+              </div>
+            </div>
+          </div>
+
+          <div class="hero-actions">
+            <a href="#family" class="btn btn-primary">우리 가족 만나보기 👨‍👩‍👧</a>
+            <a href="#letters" class="btn btn-secondary">사랑의 편지함 열기 💌</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================================================================
+       2. 가족 소개 섹션 (아빠, 엄마, 딸)
+       =================================================================== -->
+  <section class="section" id="family">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">OUR BELOVED FAMILY</span>
+        <h3 class="section-title">세 가족 소개</h3>
+        <p class="section-desc">
+          서로를 가장 아끼고 존경하는 아빠, 엄마, 딸의 프로필입니다.<br>
+          카메라 아이콘(📷)을 클릭하여 실제 가족 사진으로 언제든 변경하실 수 있습니다.
+        </p>
+      </div>
+
+      <div class="members-grid">
+        <!-- 1. 아빠 -->
+        <div class="member-card father">
+          <div class="avatar-wrapper">
+            <img src="assets/images/father.jpg" id="avatar-father" alt="아빠 프로필 사진" class="avatar-img">
+            <div class="avatar-badge">👔</div>
+            <button class="photo-change-btn" id="change-father-btn" title="아빠 사진 교체">📷</button>
+            <input type="file" id="file-father" accept="image/*" style="display:none;">
+          </div>
+
+          <span class="member-role">든든한 가장 & 사랑 가득한 아빠</span>
+          <h4 class="member-name">아 빠</h4>
+          <div class="member-summary">"36년의 헌신, 그리고 존경스러운 명예 은퇴"</div>
+          <p class="member-desc">
+            36년간 묵묵히 가족을 위해 헌신하시고 이제는 명예로운 은퇴 후 여유로운 삶을 누리시는 자상한 우리 아빠.
+            언제나 딸 예원이와 아내를 세상에서 제일 아끼고 사랑하는 우리 집의 가장 든든하고 따뜻한 큰 나무입니다.
+          </p>
+
+          <div class="member-tags">
+            <span>#36년근속명예은퇴</span>
+            <span>#딸바보아빠</span>
+            <span>#아내바라기</span>
+            <span>#자상함의아이콘</span>
+          </div>
+
+          <div class="birthday-box">
+            <div class="bday-date">
+              <span>🎂 1964년 3월 25일</span>
+              <span class="bday-dday" id="bday-father">계산 중...</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 2. 엄마 -->
+        <div class="member-card mother">
+          <div class="avatar-wrapper">
+            <img src="assets/images/mother.jpg" id="avatar-mother" alt="엄마 프로필 사진" class="avatar-img">
+            <div class="avatar-badge">💐</div>
+            <button class="photo-change-btn" id="change-mother-btn" title="엄마 사진 교체">📷</button>
+            <input type="file" id="file-mother" accept="image/*" style="display:none;">
+          </div>
+
+          <span class="member-role">가족의 수호천사 & 신사임당 같은 엄마</span>
+          <h4 class="member-name">엄 마</h4>
+          <div class="member-summary">"결혼 후 평생을 가족을 위해 헌신하는 따뜻한 품"</div>
+          <p class="member-desc">
+            지혜롭고 우아하며, 결혼 후 오직 가족의 행복과 안녕을 위해 아낌없이 사랑을 쏟아부어 주신 신사임당 같은 우리 엄마.
+            엄마의 다정한 미소와 따뜻한 손길이 있어 우리 집은 늘 봄날의 온기로 가득합니다.
+          </p>
+
+          <div class="member-tags">
+            <span>#현대판신사임당</span>
+            <span>#가족의수호천사</span>
+            <span>#세상에서가장따뜻한품</span>
+            <span>#요리명인</span>
+          </div>
+
+          <div class="birthday-box">
+            <div class="bday-date">
+              <span>💐 1967년 8월 29일</span>
+              <span class="bday-dday" id="bday-mother">계산 중...</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 3. 딸 (예원) -->
+        <div class="member-card daughter">
+          <div class="avatar-wrapper">
+            <img src="assets/images/daughter.jpg" id="avatar-daughter" alt="딸 예원 프로필 사진" class="avatar-img">
+            <div class="avatar-badge">👑</div>
+            <button class="photo-change-btn" id="change-daughter-btn" title="딸 예원 사진 교체">📷</button>
+            <input type="file" id="file-daughter" accept="image/*" style="display:none;">
+          </div>
+
+          <span class="member-role">우리 집의 보물 & 자랑스러운 딸</span>
+          <h4 class="member-name">딸 (예원)</h4>
+          <div class="member-summary">"현 32세 · 착하고 든든한 IBK 기업은행원"</div>
+          <p class="member-desc">
+            엄마 아빠를 너무 사랑하며 바르고 착하게 자라준 우리 집의 영원한 보물.
+            스마트하고 밝은 미소로 IBK 기업은행에서 당당하게 역량을 펼치고 있는,
+            엄마 아빠의 가슴을 늘 벅차게 만드는 가장 큰 자랑거리입니다.
+          </p>
+
+          <div class="member-tags">
+            <span>#우리집영원한보물</span>
+            <span>#32세황금빛청춘</span>
+            <span>#IBK기업은행재직</span>
+            <span>#세상제일착한효녀</span>
+          </div>
+
+          <div class="birthday-box">
+            <div class="bday-date">
+              <span>🌸 1994년 10월 8일</span>
+              <span class="bday-dday" id="bday-daughter">계산 중...</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================================================================
+       3. 가족 앨범란
+       =================================================================== -->
+  <section class="section" id="album">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">PHOTO GALLERY</span>
+        <h3 class="section-title">가족 앨범란</h3>
+        <p class="section-desc">
+          함께 웃고 행복했던 눈부신 순간들을 모았습니다.<br>
+          새로운 가족 사진과 소중한 기억을 언제든 앨범에 추가할 수 있습니다.
+        </p>
+      </div>
+
+      <div class="album-controls">
+        <div class="filter-group">
+          <button class="filter-btn active" data-category="all">전체 보기</button>
+          <button class="filter-btn" data-category="daily">따스한 일상</button>
+          <button class="filter-btn" data-category="travel">행복한 여행</button>
+          <button class="filter-btn" data-category="celebration">특별한 기념일</button>
+        </div>
+
+        <button class="btn btn-primary" id="add-memory-btn">
+          <span>📸</span> 새 추억 사진 올리기
+        </button>
+      </div>
+
+      <div class="album-grid" id="album-grid">
+        <!-- 자바스크립트로 렌더링 -->
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================================================================
+       4. 가족 여행 페이지
+       =================================================================== -->
+  <section class="section" id="travel" style="background: var(--bg-secondary);">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">TRAVEL STORIES</span>
+        <h3 class="section-title">가족 여행 이야기</h3>
+        <p class="section-desc">
+          발길 닿는 곳마다 웃음꽃이 피어났던 우리 가족의 여행 발자취입니다.
+        </p>
+      </div>
+
+      <div class="travel-timeline">
+        <!-- 여행 카드 1: 알프스 & 한옥 힐링 -->
+        <div class="travel-card">
+          <div class="travel-img-box">
+            <img src="assets/images/hero.jpg" alt="스위스 알프스 힐링 여행">
+          </div>
+          <div class="travel-body">
+            <div class="travel-place">🏔️ 유럽 힐링 여행 · 스위스 알프스</div>
+            <h4 class="travel-title">알프스 만년설 아래에서의 평화로운 휴식</h4>
+            <p class="travel-desc">
+              웅장한 설산과 맑은 공기 속에서 한옥의 정취를 느끼며 함께 마신 따뜻한 차 한 잔.
+              도심의 분주함을 잊고 오롯이 세 사람이 눈을 마주치며 서로의 소중함을 다시 확인한 꿈같은 시간이었습니다.
+            </p>
+            <div class="travel-tags">
+              <span>#스위스알프스</span>
+              <span>#정원티타임</span>
+              <span>#제네시스GV70드라이브</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 여행 카드 2: 제주도 봄날 유채꽃 여행 -->
+        <div class="travel-card reverse">
+          <div class="travel-img-box">
+            <img src="assets/images/travel_spring.jpg" alt="제주 봄날 유채꽃 여행">
+          </div>
+          <div class="travel-body">
+            <div class="travel-place">🌸 봄날 제주 여행 · 유채꽃과 바다</div>
+            <h4 class="travel-title">노란 유채꽃과 벚꽃길을 손잡고 걷던 날</h4>
+            <p class="travel-desc">
+              바다 바람과 함께 살랑이던 제주도의 봄.
+              손을 맞잡고 돌담길과 노란 꽃길을 걸으며 끝없이 웃었던 날입니다.
+              예원이의 해맑은 웃음소리가 엄마 아빠의 가장 큰 보약이 되었습니다.
+            </p>
+            <div class="travel-tags">
+              <span>#제주도봄여행</span>
+              <span>#유채꽃길산책</span>
+              <span>#가족사진명소</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 여행 버킷리스트 위젯 -->
+      <div class="travel-bucket">
+        <div class="bucket-header">
+          <h3><span>✈️</span> 우리 가족이 함께 떠날 다음 여행 버킷리스트</h3>
+          <button class="btn btn-secondary" id="add-bucket-btn" style="padding: 0.5rem 1.2rem; font-size: 0.88rem;">
+            + 가고 싶은 곳 추가하기
+          </button>
+        </div>
+        <div class="bucket-list" id="bucket-list">
+          <!-- 자바스크립트 렌더링 -->
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================================================================
+       5. 가족에게 전하는 편지함
+       =================================================================== -->
+  <section class="section letters-section" id="letters">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">HEARTFELT LETTERS</span>
+        <h3 class="section-title">가족에게 전하는 편지</h3>
+        <p class="section-desc">
+          평소 쑥스러워 말로 다 전하지 못했던 깊은 사랑과 감사의 마음을 편지에 담았습니다.
+        </p>
+      </div>
+
+      <div style="text-align: right; margin-bottom: 2rem;">
+        <button class="btn btn-primary" id="write-letter-btn">
+          <span>✍️</span> 마음을 담은 새 편지 쓰기
+        </button>
+      </div>
+
+      <div class="letters-grid" id="letters-grid">
+        <!-- 자바스크립트 렌더링 -->
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================================================================
+       6. 가족 연중 기념일 & 축하 메시지 방명록
+       =================================================================== -->
+  <section class="section" id="celebration">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">SPECIAL DAYS & MESSAGES</span>
+        <h3 class="section-title">가족 기념일 & 축하 메시지</h3>
+        <p class="section-desc">
+          우리 가족의 소중한 기념일을 축하하고, 서로에게 힘이 되는 따뜻한 한마디를 남겨주세요.
+        </p>
+      </div>
+
+      <div class="celebration-grid">
+        <!-- 왼쪽: 연중 기념일 리스트 -->
+        <div class="anniversary-card-box">
+          <h4 style="font-family: var(--font-serif); font-size: 1.35rem; color: var(--text-main); margin-bottom: 0.5rem;">
+            📅 우리 가족 연중 주요 기념일
+          </h4>
+          <p style="font-size: 0.9rem; color: var(--text-muted);">매년 돌아오는 축복의 날들을 함께 기념합니다.</p>
+
+          <div class="anniversary-list">
+            <div class="anniversary-item">
+              <div class="anniversary-info">
+                <div class="anniversary-icon">🎂</div>
+                <div class="anniversary-text">
+                  <h4>03월 25일 · 자상한 아빠 생신</h4>
+                  <p>1964년 3월 25일 우리 집 든든한 기둥의 탄생일</p>
+                </div>
+              </div>
+              <span class="anniversary-badge">생신 축하</span>
+            </div>
+
+            <div class="anniversary-item">
+              <div class="anniversary-info">
+                <div class="anniversary-icon">💍</div>
+                <div class="anniversary-text">
+                  <h4>05월 21일 · 부모님 결혼기념일</h4>
+                  <p>세상에서 가장 아름다운 사랑의 결실 (부부의 날)</p>
+                </div>
+              </div>
+              <span class="anniversary-badge">영원한 사랑</span>
+            </div>
+
+            <div class="anniversary-item">
+              <div class="anniversary-info">
+                <div class="anniversary-icon">💐</div>
+                <div class="anniversary-text">
+                  <h4>08월 29일 · 사랑하는 엄마 생신</h4>
+                  <p>1967년 8월 29일 가족의 수호천사 탄생일</p>
+                </div>
+              </div>
+              <span class="anniversary-badge">생신 축하</span>
+            </div>
+
+            <div class="anniversary-item">
+              <div class="anniversary-info">
+                <div class="anniversary-icon">🌸</div>
+                <div class="anniversary-text">
+                  <h4>10월 08일 · 우리 보물 예원이 생일</h4>
+                  <p>1994년 10월 8일 가장 큰 축복이자 선물인 딸의 탄생일</p>
+                </div>
+              </div>
+              <span class="anniversary-badge">생일 축하</span>
+            </div>
+
+            <div class="anniversary-item">
+              <div class="anniversary-info">
+                <div class="anniversary-icon">🎖️</div>
+                <div class="anniversary-text">
+                  <h4>12월 31일 · 아빠 36년 명예 정년퇴임 기념일</h4>
+                  <p>평생을 바쳐 가족을 지켜주신 아버지의 위대한 헌신</p>
+                </div>
+              </div>
+              <span class="anniversary-badge">존경과 감사</span>
+            </div>
+
+            <div class="anniversary-item">
+              <div class="anniversary-info">
+                <div class="anniversary-icon">🏢</div>
+                <div class="anniversary-text">
+                  <h4>01월 02일 · 예원이 IBK 기업은행 입사일</h4>
+                  <p>사회인으로서 첫발을 내디딘 자랑스러운 날</p>
+                </div>
+              </div>
+              <span class="anniversary-badge">자랑스러운 딸</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 오른쪽: 축하 메시지 남기기 (롤링페이퍼) -->
+        <div class="guestbook-box">
+          <h4 style="font-family: var(--font-serif); font-size: 1.35rem; color: var(--text-main); margin-bottom: 0.5rem;">
+            💌 사랑의 축하 메시지 남기기
+          </h4>
+          <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 1.2rem;">
+            가족에게 건네고 싶은 축하와 사랑의 응원을 실시간으로 남겨보세요.
+          </p>
+
+          <form class="message-form" id="guestbook-form">
+            <div class="form-row">
+              <input type="text" class="form-input" id="msg-author" placeholder="남기는 분 성함 (예: 딸 예원이, 아빠)" required>
+            </div>
+            <textarea class="form-textarea" id="msg-content" placeholder="가족에게 전하는 따뜻한 축하와 사랑의 메시지를 적어주세요..." required></textarea>
+            
+            <div class="form-footer">
+              <div class="emoji-selector">
+                <button type="button" class="emoji-btn selected" data-emoji="💐">💐</button>
+                <button type="button" class="emoji-btn" data-emoji="🎂">🎂</button>
+                <button type="button" class="emoji-btn" data-emoji="💖">💖</button>
+                <button type="button" class="emoji-btn" data-emoji="🥂">🥂</button>
+                <button type="button" class="emoji-btn" data-emoji="🌸">🌸</button>
+                <button type="button" class="emoji-btn" data-emoji="🎁">🎁</button>
+              </div>
+              <button type="submit" class="btn btn-primary" style="padding: 0.55rem 1.4rem; font-size: 0.92rem;">
+                메시지 남기기 💌
+              </button>
+            </div>
+          </form>
+
+          <div class="messages-stream" id="messages-stream">
+            <!-- 자바스크립트 렌더링 -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================================================================
+       7. 가족 발자취 (Family History 타임라인)
+       =================================================================== -->
+  <section class="section history-section" id="history">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">FAMILY MILESTONES</span>
+        <h3 class="section-title">우리 가족의 빛나는 발자취</h3>
+        <p class="section-desc">
+          서로를 아끼고 지켜온 지난 시간들, 그리고 앞으로 함께 열어갈 눈부신 날들입니다.
+        </p>
+      </div>
+
+      <div class="history-timeline">
+        <!-- 1964 ~ 1967 -->
+        <div class="history-item left">
+          <div class="history-dot"></div>
+          <div class="history-card">
+            <div class="history-year">1964 & 1967</div>
+            <h4 class="history-title">두 분의 소중한 탄생</h4>
+            <p class="history-desc">
+              1964년 3월 25일 든든한 아빠의 탄생, 그리고 1967년 8월 29일 자애로운 엄마의 탄생. 두 분의 시작이 우리 가족의 첫 뿌리가 되었습니다.
+            </p>
+          </div>
+        </div>
+
+        <!-- 아빠의 직장 입사 -->
+        <div class="history-item right">
+          <div class="history-dot"></div>
+          <div class="history-card">
+            <div class="history-year">아빠의 열정과 성실</div>
+            <h4 class="history-title">36년간의 위대한 여정 시작</h4>
+            <p class="history-desc">
+              가족을 위해 한결같은 성실함과 책임감으로 첫 직장 생활을 시작하신 아빠. 그 숭고한 헌신은 36년간 이어집니다.
+            </p>
+          </div>
+        </div>
+
+        <!-- 결혼 -->
+        <div class="history-item left">
+          <div class="history-dot"></div>
+          <div class="history-card">
+            <div class="history-year">사랑의 결실</div>
+            <h4 class="history-title">아빠와 엄마의 아름다운 결혼식</h4>
+            <p class="history-desc">
+              서로 사랑(愛)하고, 아름답고(美), 착하게(善) 살겠다는 다짐으로 가정을 꾸린 두 분. 세상에서 가장 따뜻한 보금자리가 열렸습니다.
+            </p>
+          </div>
+        </div>
+
+        <!-- 1994년 딸 예원 탄생 -->
+        <div class="history-item right">
+          <div class="history-dot"></div>
+          <div class="history-card">
+            <div class="history-year">1994년 10월 8일</div>
+            <h4 class="history-title">우리 집의 가장 큰 축복, 딸 예원이의 탄생</h4>
+            <p class="history-desc">
+              세상에서 가장 눈부신 선물처럼 우리 품에 안겨준 딸 예원이. 그날 이후 온 집안에 웃음소리가 끊이지 않았습니다.
+            </p>
+          </div>
+        </div>
+
+        <!-- 예원이 IBK 기업은행 입사 -->
+        <div class="history-item left">
+          <div class="history-dot"></div>
+          <div class="history-card">
+            <div class="history-year">자랑스러운 결실</div>
+            <h4 class="history-title">딸 예원이의 IBK 기업은행 입사</h4>
+            <p class="history-desc">
+              바르고 착하게 자라 어엿한 전문 금융인으로 도약한 딸 예원이. 엄마 아빠의 눈시울을 붉히게 만든 최고의 자랑이자 기쁨이었습니다.
+            </p>
+          </div>
+        </div>
+
+        <!-- 아빠 36년 명예 은퇴 -->
+        <div class="history-item right">
+          <div class="history-dot"></div>
+          <div class="history-card">
+            <div class="history-year">명예로운 은퇴</div>
+            <h4 class="history-title">아빠의 36년 근속 명예 정년퇴임</h4>
+            <p class="history-desc">
+              비바람을 막아준 36년간의 헌신에 온 가족이 존경과 감사를 바치며 성대한 축하 파티를 열었습니다. "아버지, 정말 수고 많으셨습니다."
+            </p>
+          </div>
+        </div>
+
+        <!-- 현재와 미래 -->
+        <div class="history-item left">
+          <div class="history-dot"></div>
+          <div class="history-card">
+            <div class="history-year">현재 & 영원히</div>
+            <h4 class="history-title">알프스 한옥에서 나누는 봄날의 행복</h4>
+            <p class="history-desc">
+              넓은 정원과 수영장, 현대 제네시스 GV70, 그리고 정원에서 나누는 따뜻한 차 한 잔. 세 가족의 사랑은 오늘도 봄날처럼 눈부시게 피어납니다.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================================================================
+       플로팅 감성 BGM 오디오 플레이어
+       =================================================================== -->
+  <aside class="floating-audio-player" id="floating-player" aria-label="배경음악 플레이어">
+    <div class="vinyl-disc" id="vinyl-disc"></div>
+    <div class="player-info">
+      <div class="player-title" id="audio-track-title">🕊️ 봄날의 잔잔한 피아노</div>
+      <div class="player-status" id="audio-status">음악 켜기 ▶</div>
+    </div>
+    <div class="player-controls">
+      <button class="play-toggle-btn" id="audio-toggle-btn" title="배경음악 재생">▶</button>
+      <input type="range" class="volume-slider" id="audio-volume" min="0" max="1" step="0.05" value="0.35" title="음량 조절">
+    </div>
+  </aside>
+
+  <!-- ===================================================================
+       모달 팝업 모음
+       =================================================================== -->
+
+  <!-- 1. 이미지 라이트박스 모달 -->
+  <div class="modal-overlay lightbox-modal" id="lightbox-modal">
+    <div class="modal-content">
+      <button class="modal-close-btn" id="lightbox-close">✕</button>
+      <img src="" id="lightbox-img" alt="사진 확대" class="lightbox-img">
+      <div class="lightbox-caption-box">
+        <span id="lightbox-date" style="font-size: 0.85rem; color: var(--color-primary); font-weight: 600;"></span>
+        <h3 id="lightbox-title" style="font-family: var(--font-serif); font-size: 1.4rem; color: var(--text-main); margin: 0.3rem 0;"></h3>
+        <p id="lightbox-desc" style="font-size: 0.95rem; color: var(--text-muted); line-height: 1.7;"></p>
+      </div>
+    </div>
+  </div>
+
+  <!-- 2. 새 추억 사진 추가 모달 -->
+  <div class="modal-overlay" id="add-memory-modal">
+    <div class="modal-content">
+      <button class="modal-close-btn" id="add-memory-close">✕</button>
+      <h3 style="font-family: var(--font-serif); font-size: 1.4rem; color: var(--text-main); margin-bottom: 0.5rem;">
+        📸 새로운 가족 추억 등록
+      </h3>
+      <p style="font-size: 0.88rem; color: var(--text-muted); margin-bottom: 1.5rem;">
+        우리 가족의 행복했던 순간을 사진과 함께 기록해 보세요.
+      </p>
+
+      <form id="memory-form">
+        <div style="margin-bottom: 1rem;">
+          <label style="display:block; font-size: 0.85rem; font-weight: 600; margin-bottom: 0.3rem;">추억 제목</label>
+          <input type="text" class="form-input" id="mem-title" placeholder="예: 봄날 피크닉, 맛있는 가족 외식" required>
+        </div>
+
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem;">
+          <div>
+            <label style="display:block; font-size: 0.85rem; font-weight: 600; margin-bottom: 0.3rem;">카테고리</label>
+            <select class="form-input" id="mem-category">
+              <option value="daily">따스한 일상</option>
+              <option value="travel">행복한 여행</option>
+              <option value="celebration">특별한 기념일</option>
+            </select>
+          </div>
+          <div>
+            <label style="display:block; font-size: 0.85rem; font-weight: 600; margin-bottom: 0.3rem;">날짜</label>
+            <input type="text" class="form-input" id="mem-date" placeholder="예: 2026.05.05">
+          </div>
+        </div>
+
+        <div style="margin-bottom: 1rem;">
+          <label style="display:block; font-size: 0.85rem; font-weight: 600; margin-bottom: 0.3rem;">사진 선택</label>
+          <input type="file" class="form-input" id="mem-file" accept="image/*">
+        </div>
+
+        <div style="margin-bottom: 1.5rem;">
+          <label style="display:block; font-size: 0.85rem; font-weight: 600; margin-bottom: 0.3rem;">그날의 기억 & 코멘트</label>
+          <textarea class="form-textarea" id="mem-caption" placeholder="그때 나눈 이야기, 느꼈던 감정을 남겨주세요." required></textarea>
+        </div>
+
+        <div style="text-align: right;">
+          <button type="submit" class="btn btn-primary" style="width: 100%; justify-content: center;">
+            추억 앨범에 저장하기 🌸
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- 3. 편지 읽기 모달 -->
+  <div class="modal-overlay" id="read-letter-modal">
+    <div class="modal-content" style="max-width: 580px; background: linear-gradient(135deg, #fff, #fdfbf7); border: 2px solid var(--border-soft);">
+      <button class="modal-close-btn" id="read-letter-close">✕</button>
+      <div style="text-align: center; font-size: 2.2rem; margin-bottom: 0.5rem;">💌</div>
+      <h3 id="read-letter-to" style="font-family: var(--font-serif); font-size: 1.5rem; color: var(--text-main); margin-bottom: 0.3rem; text-align: center;"></h3>
+      <div id="read-letter-from" style="font-size: 0.95rem; color: var(--color-primary); font-weight: 600; text-align: center; margin-bottom: 1.5rem;"></div>
+      
+      <div style="background: #fff; padding: 2rem; border-radius: var(--radius-md); border: 1px dashed var(--border-soft); box-shadow: inset 0 2px 6px rgba(0,0,0,0.02);">
+        <p id="read-letter-body" style="font-family: var(--font-serif); font-size: 1.05rem; line-height: 2; color: var(--text-main); white-space: pre-line;"></p>
+      </div>
+
+      <div style="text-align: right; margin-top: 1.2rem;">
+        <span id="read-letter-date" style="font-size: 0.85rem; color: var(--text-light);"></span>
+      </div>
+    </div>
+  </div>
+
+  <!-- 4. 새 편지 작성 모달 -->
+  <div class="modal-overlay" id="write-letter-modal">
+    <div class="modal-content">
+      <button class="modal-close-btn" id="write-letter-close">✕</button>
+      <h3 style="font-family: var(--font-serif); font-size: 1.4rem; color: var(--text-main); margin-bottom: 0.5rem;">
+        ✉️ 가족에게 마음 전하는 편지 쓰기
+      </h3>
+      <p style="font-size: 0.88rem; color: var(--text-muted); margin-bottom: 1.5rem;">
+        가족에게 전하고 싶은 진심 어린 마음을 편지지 위에 적어보세요.
+      </p>
+
+      <form id="letter-form">
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem;">
+          <div>
+            <label style="display:block; font-size: 0.85rem; font-weight: 600; margin-bottom: 0.3rem;">받는 사람</label>
+            <input type="text" class="form-input" id="letter-to-input" placeholder="예: 사랑하는 아빠에게, 엄마에게" required>
+          </div>
+          <div>
+            <label style="display:block; font-size: 0.85rem; font-weight: 600; margin-bottom: 0.3rem;">보내는 사람</label>
+            <input type="text" class="form-input" id="letter-from-input" placeholder="예: 딸 예원이가, 남편이" required>
+          </div>
+        </div>
+
+        <div style="margin-bottom: 1.5rem;">
+          <label style="display:block; font-size: 0.85rem; font-weight: 600; margin-bottom: 0.3rem;">편지 본문</label>
+          <textarea class="form-textarea" id="letter-content-input" style="min-height: 180px;" placeholder="가족에게 전하고 싶은 사랑과 고마운 마음을 자유롭게 적어주세요." required></textarea>
+        </div>
+
+        <div style="text-align: right;">
+          <button type="submit" class="btn btn-primary" style="width: 100%; justify-content: center;">
+            사랑의 편지함에 띄우기 🕊️
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- ===================================================================
+       푸터
+       =================================================================== -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-brand">예원'S Family Story</div>
+      <div class="footer-motto">"우리 집은 서로 사랑(愛) 하면서, 아름답고(美), 착하게(善) 살아요"</div>
+      
+      <div class="footer-family-names">
+        <div class="footer-name-pill">👨‍💼 자상한 아빠 (1964.03.25)</div>
+        <div class="footer-name-pill">👩‍👧 신사임당 엄마 (1967.08.29)</div>
+        <div class="footer-name-pill">🌸 우리집 보물 딸 예원 (1994.10.08)</div>
+      </div>
+
+      <p class="footer-copy">
+        © 2026 예원'S Family Story. All rights reserved. Designed with warmth, love & pastel serenity.
+      </p>
+    </div>
+  </footer>
+
+  <!-- ===================================================================
+       모든 스크립트와 오디오 엔진을 단일 index 파일 내에 완전히 포함 (All-in-One JS)
+       =================================================================== -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      initThemeManager();
+      initPetalAnimation();
+      initAudioManager();
+      initBirthdayCalculators();
+      initAvatarUploader();
+      initAlbumGallery();
+      initTravelBucketList();
+      initLettersSystem();
+      initCelebrationBoard();
+      initNavScroll();
+    });
+
+    /* 1. 테마 매니저 */
+    function initThemeManager() {
+      const themeSelect = document.getElementById('theme-select');
+      if (!themeSelect) return;
+
+      const savedTheme = localStorage.getItem('family_theme') || 'warm-peach';
+      document.body.setAttribute('data-theme', savedTheme);
+      themeSelect.value = savedTheme;
+
+      themeSelect.addEventListener('change', (e) => {
+        const theme = e.target.value;
+        document.body.setAttribute('data-theme', theme);
+        localStorage.setItem('family_theme', theme);
+      });
+    }
+
+    /* 2. 봄날 벚꽃 꽃잎 애니메이션 (Canvas) */
+    function initPetalAnimation() {
+      const canvas = document.getElementById('petals-canvas');
+      if (!canvas) return;
+
+      const ctx = canvas.getContext('2d');
+      let width = canvas.width = window.innerWidth;
+      let height = canvas.height = window.innerHeight;
+
+      window.addEventListener('resize', () => {
+        width = canvas.width = window.innerWidth;
+        height = canvas.height = window.innerHeight;
+      });
+
+      const petals = [];
+      const petalCount = 28;
+
+      class Petal {
+        constructor() {
+          this.reset(true);
+        }
+        reset(initial = false) {
+          this.x = Math.random() * width;
+          this.y = initial ? Math.random() * height : -20;
+          this.size = Math.random() * 8 + 7;
+          this.speedX = Math.random() * 1.5 - 0.5;
+          this.speedY = Math.random() * 0.9 + 0.6;
+          this.angle = Math.random() * Math.PI * 2;
+          this.spin = Math.random() * 0.02 - 0.01;
+          this.opacity = Math.random() * 0.4 + 0.35;
+        }
+        update() {
+          this.x += this.speedX + Math.sin(this.angle) * 0.4;
+          this.y += this.speedY;
+          this.angle += this.spin;
+
+          if (this.y > height + 20 || this.x > width + 20 || this.x < -20) {
+            this.reset();
+          }
+        }
+        draw() {
+          ctx.save();
+          ctx.translate(this.x, this.y);
+          ctx.rotate(this.angle);
+          ctx.fillStyle = `rgba(255, 192, 203, ${this.opacity})`;
+          ctx.beginPath();
+          ctx.moveTo(0, 0);
+          ctx.bezierCurveTo(this.size, -this.size / 2, this.size, this.size / 2, 0, this.size);
+          ctx.bezierCurveTo(-this.size, this.size / 2, -this.size, -this.size / 2, 0, 0);
+          ctx.fill();
+          ctx.restore();
+        }
+      }
+
+      for (let i = 0; i < petalCount; i++) {
+        petals.push(new Petal());
+      }
+
+      function animate() {
+        ctx.clearRect(0, 0, width, height);
+        petals.forEach(p => {
+          p.update();
+          p.draw();
+        });
+        requestAnimationFrame(animate);
+      }
+      animate();
+    }
+
+    /* 3. 감성 피아노 배경음악 시스템 (Web Audio Synthesizer) */
+    function initAudioManager() {
+      const toggleBtn = document.getElementById('audio-toggle-btn');
+      const player = document.getElementById('floating-player');
+      const volumeSlider = document.getElementById('audio-volume');
+      const playerStatus = document.getElementById('audio-status');
+
+      if (!toggleBtn) return;
+
+      let audioCtx = null;
+      let isPlaying = false;
+      let currentTimer = null;
+      let masterGain = null;
+
+      // Cmaj9 -> Am9 -> Fmaj7 -> Gsus4 -> Em7
+      const chordProgressions = [
+        { bass: 130.81, notes: [261.63, 329.63, 392.00, 493.88, 587.33] }, // Cmaj9
+        { bass: 110.00, notes: [220.00, 261.63, 329.63, 392.00, 493.88] }, // Am9
+        { bass: 87.31,  notes: [174.61, 261.63, 329.63, 349.23, 440.00] }, // Fmaj7
+        { bass: 98.00,  notes: [196.00, 261.63, 293.66, 392.00, 523.25] }, // Gsus4
+        { bass: 82.41,  notes: [164.81, 246.94, 329.63, 392.00, 493.88] }, // Em7
+        { bass: 110.00, notes: [220.00, 261.63, 329.63, 392.00, 587.33] }  // Am9
+      ];
+
+      let currentChordIndex = 0;
+
+      function initAudioContext() {
+        if (!audioCtx) {
+          const AudioContext = window.AudioContext || window.webkitAudioContext;
+          audioCtx = new AudioContext();
+          masterGain = audioCtx.createGain();
+          masterGain.gain.setValueAtTime(volumeSlider ? parseFloat(volumeSlider.value) : 0.35, audioCtx.currentTime);
+          masterGain.connect(audioCtx.destination);
+        }
+      }
+
+      function playPianoTone(freq, time, duration, velocity = 0.2) {
+        if (!audioCtx) return;
+
+        const osc = audioCtx.createOscillator();
+        const filter = audioCtx.createBiquadFilter();
+        const noteGain = audioCtx.createGain();
+
+        osc.type = 'triangle';
+        osc.frequency.setValueAtTime(freq, time);
+
+        filter.type = 'lowpass';
+        filter.frequency.setValueAtTime(1400, time);
+        filter.frequency.exponentialRampToValueAtTime(350, time + duration);
+
+        noteGain.gain.setValueAtTime(0.0001, time);
+        noteGain.gain.linearRampToValueAtTime(velocity, time + 0.04);
+        noteGain.gain.exponentialRampToValueAtTime(velocity * 0.6, time + 0.35);
+        noteGain.gain.exponentialRampToValueAtTime(0.0001, time + duration);
+
+        osc.connect(filter);
+        filter.connect(noteGain);
+        noteGain.connect(masterGain);
+
+        osc.start(time);
+        osc.stop(time + duration);
+      }
+
+      function playNextChordPattern() {
+        if (!isPlaying || !audioCtx) return;
+
+        const chord = chordProgressions[currentChordIndex];
+        const now = audioCtx.currentTime;
+
+        playPianoTone(chord.bass, now, 3.2, 0.22);
+
+        chord.notes.forEach((freq, idx) => {
+          const noteDelay = 0.12 * idx + (Math.random() * 0.03);
+          playPianoTone(freq, now + noteDelay, 2.8, 0.15);
+        });
+
+        if (Math.random() > 0.3) {
+          const melodyFreq = chord.notes[Math.floor(Math.random() * chord.notes.length)] * 1.5;
+          playPianoTone(melodyFreq, now + 0.85, 2.2, 0.12);
+        }
+
+        currentChordIndex = (currentChordIndex + 1) % chordProgressions.length;
+        currentTimer = setTimeout(playNextChordPattern, 2400);
+      }
+
+      function startMusic() {
+        initAudioContext();
+        if (audioCtx.state === 'suspended') {
+          audioCtx.resume();
+        }
+        isPlaying = true;
+        toggleBtn.innerHTML = '❚❚';
+        toggleBtn.title = '음악 일시정지';
+        player.classList.add('playing');
+        playerStatus.textContent = '잔잔히 재생 중 🎵';
+        playNextChordPattern();
+      }
+
+      function stopMusic() {
+        isPlaying = false;
+        clearTimeout(currentTimer);
+        toggleBtn.innerHTML = '▶';
+        toggleBtn.title = '배경음악 재생';
+        player.classList.remove('playing');
+        playerStatus.textContent = '일시 정지됨';
+      }
+
+      toggleBtn.addEventListener('click', () => {
+        if (isPlaying) {
+          stopMusic();
+        } else {
+          startMusic();
+        }
+      });
+
+      if (volumeSlider) {
+        volumeSlider.addEventListener('input', (e) => {
+          const vol = parseFloat(e.target.value);
+          if (masterGain && audioCtx) {
+            masterGain.gain.setValueAtTime(vol, audioCtx.currentTime);
+          }
+        });
+      }
+    }
+
+    /* 4. 가족 생일 D-day 계산기 */
+    function initBirthdayCalculators() {
+      const familyBirthdays = [
+        { id: 'bday-father', month: 3, day: 25 },
+        { id: 'bday-mother', month: 8, day: 29 },
+        { id: 'bday-daughter', month: 10, day: 8 }
+      ];
+
+      const today = new Date();
+      const currentYear = today.getFullYear();
+
+      familyBirthdays.forEach(member => {
+        const el = document.getElementById(member.id);
+        if (!el) return;
+
+        let targetDate = new Date(currentYear, member.month - 1, member.day);
+        const diffTime = targetDate.setHours(0, 0, 0, 0) - today.setHours(0, 0, 0, 0);
+        let diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+
+        if (diffDays < 0) {
+          targetDate = new Date(currentYear + 1, member.month - 1, member.day);
+          const nextDiffTime = targetDate.setHours(0, 0, 0, 0) - today.setHours(0, 0, 0, 0);
+          diffDays = Math.ceil(nextDiffTime / (1000 * 60 * 60 * 24));
+        }
+
+        if (diffDays === 0) {
+          el.textContent = '🎉 오늘 생신!';
+          el.style.backgroundColor = '#f4a261';
+          el.style.color = '#fff';
+        } else {
+          el.textContent = `D-${diffDays}`;
+        }
+      });
+    }
+
+    /* 5. 가족 사진 직접 업로드 & 교체 기능 */
+    function initAvatarUploader() {
+      const members = ['father', 'mother', 'daughter'];
+
+      // 최신 실물 사진 우선 적용을 위한 버전 관리
+      const CURRENT_VERSION = 'v2_real_photos';
+      if (localStorage.getItem('family_avatar_version') !== CURRENT_VERSION) {
+        members.forEach(m => localStorage.removeItem(`family_avatar_${m}`));
+        localStorage.setItem('family_avatar_version', CURRENT_VERSION);
+      }
+
+      members.forEach(member => {
+        const imgEl = document.getElementById(`avatar-${member}`);
+        const btnEl = document.getElementById(`change-${member}-btn`);
+        const fileInput = document.getElementById(`file-${member}`);
+
+        const savedImg = localStorage.getItem(`family_avatar_${member}`);
+        if (savedImg && imgEl) {
+          imgEl.src = savedImg;
+        }
+
+        if (btnEl && fileInput) {
+          btnEl.addEventListener('click', () => {
+            fileInput.click();
+          });
+
+          fileInput.addEventListener('change', (e) => {
+            const file = e.target.files[0];
+            if (!file) return;
+
+            const reader = new FileReader();
+            reader.onload = (event) => {
+              const dataUrl = event.target.result;
+              if (imgEl) imgEl.src = dataUrl;
+              localStorage.setItem(`family_avatar_${member}`, dataUrl);
+              alert('가족 사진이 성공적으로 반영되었습니다! ✨');
+            };
+            reader.readAsDataURL(file);
+          });
+        }
+      });
+    }
+
+    /* 6. 가족 앨범 & 라이트박스 팝업 & 새 추억 추가 */
+    function initAlbumGallery() {
+      const initialMemories = [
+        {
+          id: 1,
+          category: 'daily',
+          categoryName: '일상',
+          title: '알프스 산자락 한옥의 봄날 티타임',
+          date: '2026.04.12',
+          caption: '스위스 설산을 바라보며 넓은 한옥 정원에서 마시는 따스한 차 한잔. 세 가족의 평화로운 시간.',
+          image: 'assets/images/hero.jpg'
+        },
+        {
+          id: 2,
+          category: 'celebration',
+          categoryName: '기념일',
+          title: '아빠의 36년 명예로운 정년퇴임 축하 파티',
+          date: '2025.12.31',
+          caption: '36년간 헌신해주신 아빠께 바치는 감사 케이크와 축하 파티. "아버지, 진심으로 존경하고 사랑합니다."',
+          image: 'assets/images/celebration.jpg'
+        },
+        {
+          id: 3,
+          category: 'travel',
+          categoryName: '여행',
+          title: '봄날 제주 유채꽃밭 힐링 산책',
+          date: '2025.04.05',
+          caption: '황금빛 유채꽃과 활짝 핀 벚꽃길을 손잡고 걸으며 나눈 이야기들. 영원히 간직할 따스한 추억.',
+          image: 'assets/images/travel_spring.jpg'
+        },
+        {
+          id: 4,
+          category: 'travel',
+          categoryName: '여행',
+          title: '엄마의 신비로운 푸른 호숫가 힐링 여행',
+          date: '2025.06.18',
+          caption: '청명한 물빛과 자작나무 숲이 어우러진 호숫가에서. 신사임당처럼 우아하고 멋진 우리 엄마의 힐링 순간.',
+          image: 'assets/images/mother_full.jpg'
+        },
+        {
+          id: 5,
+          category: 'daily',
+          categoryName: '일상',
+          title: '우리 집의 영원한 보물 예원이의 싱그러운 미소',
+          date: '2025.09.20',
+          caption: '따사로운 햇살 아래 환하게 미소 짓는 사랑스러운 딸 예원이. 언제나 착하고 지혜로운 우리 집의 자랑.',
+          image: 'assets/images/daughter_full.jpg'
+        },
+        {
+          id: 6,
+          category: 'daily',
+          categoryName: '일상',
+          title: '아빠의 여유롭고 상쾌한 푸른 정원 산책',
+          date: '2025.10.12',
+          caption: '36년 직장 생활을 명예롭게 마치고 푸른 자연 속에서 여유를 만끽하시는 멋지고 자상한 아빠의 모습.',
+          image: 'assets/images/father_full.jpg'
+        }
+      ];
+
+      const savedMemories = JSON.parse(localStorage.getItem('family_album_items') || '[]');
+      const allMemories = [...initialMemories, ...savedMemories];
+
+      const grid = document.getElementById('album-grid');
+      const filterBtns = document.querySelectorAll('.filter-btn');
+
+      function renderAlbum(category = 'all') {
+        if (!grid) return;
+        grid.innerHTML = '';
+
+        const filtered = category === 'all' 
+          ? allMemories 
+          : allMemories.filter(m => m.category === category);
+
+        filtered.forEach(item => {
+          const card = document.createElement('div');
+          card.className = 'album-item';
+          card.innerHTML = `
+            <div class="album-thumb-wrap">
+              <img src="${item.image}" alt="${item.title}" loading="lazy">
+              <span class="album-category-badge">${item.categoryName || '추억'}</span>
+            </div>
+            <div class="album-info">
+              <span class="album-date">🗓️ ${item.date}</span>
+              <h4 class="album-title">${item.title}</h4>
+              <p class="album-caption">${item.caption}</p>
+            </div>
+          `;
+
+          card.addEventListener('click', () => openLightbox(item));
+          grid.appendChild(card);
+        });
+      }
+
+      filterBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+          filterBtns.forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+          renderAlbum(btn.dataset.category);
+        });
+      });
+
+      renderAlbum();
+
+      const lightboxModal = document.getElementById('lightbox-modal');
+      const lightboxImg = document.getElementById('lightbox-img');
+      const lightboxTitle = document.getElementById('lightbox-title');
+      const lightboxDate = document.getElementById('lightbox-date');
+      const lightboxDesc = document.getElementById('lightbox-desc');
+      const lightboxClose = document.getElementById('lightbox-close');
+
+      function openLightbox(item) {
+        if (!lightboxModal) return;
+        lightboxImg.src = item.image;
+        lightboxTitle.textContent = item.title;
+        lightboxDate.textContent = item.date;
+        lightboxDesc.textContent = item.caption;
+        lightboxModal.classList.add('active');
+      }
+
+      if (lightboxClose) {
+        lightboxClose.addEventListener('click', () => {
+          lightboxModal.classList.remove('active');
+        });
+      }
+      if (lightboxModal) {
+        lightboxModal.addEventListener('click', (e) => {
+          if (e.target === lightboxModal) lightboxModal.classList.remove('active');
+        });
+      }
+
+      const addMemoryBtn = document.getElementById('add-memory-btn');
+      const addMemoryModal = document.getElementById('add-memory-modal');
+      const addMemoryClose = document.getElementById('add-memory-close');
+      const memoryForm = document.getElementById('memory-form');
+
+      if (addMemoryBtn && addMemoryModal) {
+        addMemoryBtn.addEventListener('click', () => addMemoryModal.classList.add('active'));
+        addMemoryClose.addEventListener('click', () => addMemoryModal.classList.remove('active'));
+        addMemoryModal.addEventListener('click', (e) => {
+          if (e.target === addMemoryModal) addMemoryModal.classList.remove('active');
+        });
+
+        if (memoryForm) {
+          memoryForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const title = document.getElementById('mem-title').value.trim();
+            const category = document.getElementById('mem-category').value;
+            const categoryName = document.getElementById('mem-category').selectedOptions[0].text;
+            const date = document.getElementById('mem-date').value || new Date().toISOString().slice(0, 10).replace(/-/g, '.');
+            const caption = document.getElementById('mem-caption').value.trim();
+            const fileInput = document.getElementById('mem-file');
+
+            if (!title || !caption) {
+              alert('제목과 내용을 입력해주세요.');
+              return;
+            }
+
+            const handleSave = (imgUrl) => {
+              const newMem = {
+                id: Date.now(),
+                category,
+                categoryName,
+                title,
+                date,
+                caption,
+                image: imgUrl || 'assets/images/hero.jpg'
+              };
+              savedMemories.unshift(newMem);
+              localStorage.setItem('family_album_items', JSON.stringify(savedMemories));
+              allMemories.unshift(newMem);
+              renderAlbum('all');
+              memoryForm.reset();
+              addMemoryModal.classList.remove('active');
+              alert('소중한 가족 추억이 앨범에 등록되었습니다! 📸');
+            };
+
+            if (fileInput.files && fileInput.files[0]) {
+              const reader = new FileReader();
+              reader.onload = (ev) => handleSave(ev.target.result);
+              reader.readAsDataURL(fileInput.files[0]);
+            } else {
+              handleSave('assets/images/hero.jpg');
+            }
+          });
+        }
+      }
+    }
+
+    /* 7. 가족 여행 버킷리스트 */
+    function initTravelBucketList() {
+      const defaultBuckets = [
+        { id: 1, text: '🇨🇭 스위스 융프라우 & 체르마트 기차 여행', votes: 12 },
+        { id: 2, text: '🇫🇷 남프랑스 프로방스 라벤더 로드 드라이브', votes: 9 },
+        { id: 3, text: '🌴 하와이 마우이섬 해변 휴양 & 선셋 디너', votes: 15 },
+        { id: 4, text: '🇯🇵 홋카이도 온천 료칸 힐링 겨울 여행', votes: 8 }
+      ];
+
+      let buckets = JSON.parse(localStorage.getItem('family_travel_buckets') || 'null') || defaultBuckets;
+      const listEl = document.getElementById('bucket-list');
+      const addBtn = document.getElementById('add-bucket-btn');
+
+      function renderBuckets() {
+        if (!listEl) return;
+        listEl.innerHTML = '';
+        buckets.forEach(b => {
+          const item = document.createElement('div');
+          item.className = 'bucket-item';
+          item.innerHTML = `
+            <span>${b.text}</span>
+            <button class="vote-btn" title="응원/투표">❤️ <strong>${b.votes}</strong></button>
+          `;
+          item.querySelector('.vote-btn').addEventListener('click', () => {
+            b.votes++;
+            localStorage.setItem('family_travel_buckets', JSON.stringify(buckets));
+            renderBuckets();
+          });
+          listEl.appendChild(item);
+        });
+      }
+
+      if (addBtn) {
+        addBtn.addEventListener('click', () => {
+          const newPlace = prompt('우리 가족이 함께 가고 싶은 새로운 여행지를 적어주세요:');
+          if (newPlace && newPlace.trim()) {
+            buckets.push({ id: Date.now(), text: `✨ ${newPlace.trim()}`, votes: 1 });
+            localStorage.setItem('family_travel_buckets', JSON.stringify(buckets));
+            renderBuckets();
+          }
+        });
+      }
+
+      renderBuckets();
+    }
+
+    /* 8. 가족에게 전하는 편지 시스템 (Letters) */
+    function initLettersSystem() {
+      const initialLetters = [
+        {
+          id: 1,
+          to: '사랑하는 아빠에게',
+          from: '딸 예원 올림',
+          date: '2026.01.01',
+          preview: '아빠, 36년이라는 기나긴 세월 동안 비바람을 막아주신 가장 든든한 우리 집의 큰 기둥이 되어주셔서 진심으로 감사드려요. 은퇴 후 맞이하신 매일매일이 봄날처럼 따스하고 행복하셨으면 좋겠어요. 아빠 딸이라서 세상에서 제일 행복해요. 사랑합니다!',
+          content: `사랑하는 아빠에게,\n\n아빠, 36년이라는 기나긴 세월 동안 비바람을 막아주신 가장 든든한 우리 집의 큰 기둥이 되어주셔서 진심으로 감사드려요.\n\n매일 아침 성실함 하나로 가족을 위해 일터로 향하시던 아빠의 묵묵한 뒷모습을 보며 저는 바르고 씩씩하게 자랄 수 있었습니다.\n은퇴 후 맞이하신 매일매일이 햇살 가득한 봄날처럼 여유롭고 행복하셨으면 좋겠어요.\n앞으로는 아빠가 좋아하시는 여행도 많이 다니시고, 정원에서 엄마와 따뜻한 차도 마음껏 즐기세요.\n\n아빠의 딸이라서 세상에서 제일 자랑스럽고 행복합니다.\n언제나 건강하시고 오래오래 우리 곁에 계셔주세요. 사랑합니다! ❤️\n\n- 우리 집의 보물, 딸 예원 올림`
+        },
+        {
+          id: 2,
+          to: '우리 집의 보물 예원이에게',
+          from: '자상한 아빠가',
+          date: '2026.01.15',
+          preview: '착하고 밝게 자라주어 우리 집의 가장 큰 행복이 되어준 예원아. IBK 기업은행에서 멋지게 사회생활을 해나가는 모습을 보면 아빠는 늘 가슴이 벅차단다. 언제나 너의 든든한 편이 되어줄게.',
+          content: `우리 집의 보물 예원이에게,\n\n착하고 예쁘게, 그리고 누구보다 바르게 자라주어 엄마 아빠의 가장 큰 기쁨이자 자랑이 되어준 사랑하는 딸 예원아.\n\n36년간 직장 생활을 무사히 마치고 은퇴할 수 있었던 것도, 힘들 때마다 활짝 웃어주던 너의 밝은 미소 덕분이었단다.\nIBK 기업은행에서 당당하고 지혜롭게 역할을 해내는 모습을 볼 때마다 아빠는 가슴이 뭉클하고 자랑스럽기 그지없다.\n\n세상을 살아가며 때로는 지치는 날도 있겠지만, 너의 뒤에는 항상 너를 무조건적으로 믿고 사랑하는 엄마 아빠가 있다는 걸 잊지 마렴.\n우리 예원이의 앞날에 늘 꽃길만 펼쳐지길 매일 기도한단다.\n사랑한다, 내 소중한 딸! 🌸\n\n- 너를 세상에서 가장 사랑하는 아빠가`
+        },
+        {
+          id: 3,
+          to: '세상에서 가장 소중한 남편과 딸에게',
+          from: '엄마가',
+          date: '2026.02.14',
+          preview: '언제나 서로를 먼저 배려하고 아껴주는 우리 가족. 36년간 헌신해 준 든든한 남편과 착하고 사랑스러운 우리 딸 예원이가 있어 내 삶은 언제나 감사와 행복으로 가득합니다.',
+          content: `세상에서 가장 소중한 남편과 딸에게,\n\n가훈처럼 "서로 사랑(愛)하고, 아름답고(美), 착하게(善)" 살아온 우리 세 사람.\n\n평생 가족을 위해 헌신하고 명예롭게 은퇴한 존경하는 당신, 그리고 밝고 성실하게 자라 우리 가족의 비타민이 되어주는 착한 딸 예원이.\n두 사람이 있어 평범했던 내 삶의 모든 순간들이 기적처럼 아름다운 날들이 되었습니다.\n\n알프스 산자락 한옥 정원에서 함께 나누는 따스한 차 한 잔처럼, 우리 가족의 앞날도 늘 포근하고 다정한 온기로 가득하길 소망합니다.\n매일매일 더 많이 아끼고 사랑해요. 우리 영원히 행복합시다! 🕊️\n\n- 가족의 든든한 수호천사 엄마가`
+        }
+      ];
+
+      const savedLetters = JSON.parse(localStorage.getItem('family_letters') || '[]');
+      const allLetters = [...initialLetters, ...savedLetters];
+
+      const grid = document.getElementById('letters-grid');
+      const readModal = document.getElementById('read-letter-modal');
+      const readClose = document.getElementById('read-letter-close');
+      const readTo = document.getElementById('read-letter-to');
+      const readFrom = document.getElementById('read-letter-from');
+      const readDate = document.getElementById('read-letter-date');
+      const readBody = document.getElementById('read-letter-body');
+
+      function renderLetters() {
+        if (!grid) return;
+        grid.innerHTML = '';
+
+        allLetters.forEach(l => {
+          const card = document.createElement('div');
+          card.className = 'letter-card';
+          card.innerHTML = `
+            <div class="letter-envelope-icon">💌</div>
+            <h4 class="letter-to">${l.to}</h4>
+            <div class="letter-from">${l.from}</div>
+            <p class="letter-preview">${l.preview}</p>
+            <div class="letter-footer">
+              <span class="letter-date">${l.date}</span>
+              <button class="read-more-btn">편지 전문 읽기 ✉️</button>
+            </div>
+          `;
+
+          card.querySelector('.read-more-btn').addEventListener('click', () => {
+            if (!readModal) return;
+            readTo.textContent = l.to;
+            readFrom.textContent = l.from;
+            readDate.textContent = l.date;
+            readBody.textContent = l.content || l.preview;
+            readModal.classList.add('active');
+          });
+
+          grid.appendChild(card);
+        });
+      }
+
+      if (readClose) {
+        readClose.addEventListener('click', () => readModal.classList.remove('active'));
+      }
+      if (readModal) {
+        readModal.addEventListener('click', (e) => {
+          if (e.target === readModal) readModal.classList.remove('active');
+        });
+      }
+
+      const writeBtn = document.getElementById('write-letter-btn');
+      const writeModal = document.getElementById('write-letter-modal');
+      const writeClose = document.getElementById('write-letter-close');
+      const writeForm = document.getElementById('letter-form');
+
+      if (writeBtn && writeModal) {
+        writeBtn.addEventListener('click', () => writeModal.classList.add('active'));
+        writeClose.addEventListener('click', () => writeModal.classList.remove('active'));
+        writeModal.addEventListener('click', (e) => {
+          if (e.target === writeModal) writeModal.classList.remove('active');
+        });
+
+        if (writeForm) {
+          writeForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const to = document.getElementById('letter-to-input').value.trim();
+            const from = document.getElementById('letter-from-input').value.trim();
+            const content = document.getElementById('letter-content-input').value.trim();
+
+            if (!to || !from || !content) {
+              alert('받는 사람, 보내는 사람, 편지 내용을 모두 작성해주세요.');
+              return;
+            }
+
+            const newLetter = {
+              id: Date.now(),
+              to,
+              from,
+              date: new Date().toISOString().slice(0, 10).replace(/-/g, '.'),
+              preview: content.slice(0, 120) + (content.length > 120 ? '...' : ''),
+              content
+            };
+
+            savedLetters.unshift(newLetter);
+            localStorage.setItem('family_letters', JSON.stringify(savedLetters));
+            allLetters.unshift(newLetter);
+            renderLetters();
+            writeForm.reset();
+            writeModal.classList.remove('active');
+            alert('가족에게 보내는 사랑의 편지가 안전하게 전달되었습니다! 💌');
+          });
+        }
+      }
+
+      renderLetters();
+    }
+
+    /* 9. 연중 기념일 & 축하 메시지 방명록 */
+    function initCelebrationBoard() {
+      const initialMessages = [
+        {
+          id: 1,
+          author: '예원이',
+          emoji: '💐',
+          content: '아빠, 36년간의 명예로운 직장 생활과 은퇴를 온 마음으로 축하드립니다! 이제 세상에서 가장 여유롭고 행복한 시간들을 보내세요!',
+          time: '2026.01.01',
+          likes: 8
+        },
+        {
+          id: 2,
+          author: '아빠',
+          emoji: '🌸',
+          content: '우리 집의 자랑스러운 보물 예원아, IBK 기업은행에서의 멋진 도전을 아빠가 늘 힘차게 응원한다! 사랑한다 우리 딸!',
+          time: '2026.01.10',
+          likes: 12
+        },
+        {
+          id: 3,
+          author: '엄마',
+          emoji: '💖',
+          content: '서로 사랑하며 아름답고 착하게 살아온 우리 세 가족. 앞으로도 알프스 한옥에서 매일매일 행복한 추억만 쌓아가요!',
+          time: '2026.02.05',
+          likes: 15
+        }
+      ];
+
+      const savedMessages = JSON.parse(localStorage.getItem('family_messages') || '[]');
+      const allMessages = [...savedMessages, ...initialMessages];
+
+      const streamEl = document.getElementById('messages-stream');
+      const formEl = document.getElementById('guestbook-form');
+      const emojiBtns = document.querySelectorAll('.emoji-btn');
+      let selectedEmoji = '💐';
+
+      emojiBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+          emojiBtns.forEach(b => b.classList.remove('selected'));
+          btn.classList.add('selected');
+          selectedEmoji = btn.dataset.emoji || btn.textContent.trim();
+        });
+      });
+
+      function renderMessages() {
+        if (!streamEl) return;
+        streamEl.innerHTML = '';
+
+        allMessages.forEach(msg => {
+          const note = document.createElement('div');
+          note.className = 'message-note';
+          note.innerHTML = `
+            <div class="note-header">
+              <span class="note-author">${msg.emoji} <strong>${msg.author}</strong></span>
+              <span class="note-time">${msg.time}</span>
+            </div>
+            <p class="note-content">${msg.content}</p>
+            <div class="note-actions">
+              <button class="like-btn">❤️ 응원 <strong>${msg.likes}</strong></button>
+            </div>
+          `;
+
+          note.querySelector('.like-btn').addEventListener('click', () => {
+            msg.likes++;
+            localStorage.setItem('family_messages', JSON.stringify(savedMessages));
+            renderMessages();
+          });
+
+          streamEl.appendChild(note);
+        });
+      }
+
+      if (formEl) {
+        formEl.addEventListener('submit', (e) => {
+          e.preventDefault();
+          const authorInput = document.getElementById('msg-author');
+          const contentInput = document.getElementById('msg-content');
+
+          const author = authorInput.value.trim();
+          const content = contentInput.value.trim();
+
+          if (!author || !content) {
+            alert('이름과 축하 메시지를 입력해주세요.');
+            return;
+          }
+
+          const newMsg = {
+            id: Date.now(),
+            author,
+            emoji: selectedEmoji,
+            content,
+            time: new Date().toISOString().slice(0, 10).replace(/-/g, '.'),
+            likes: 1
+          };
+
+          savedMessages.unshift(newMsg);
+          allMessages.unshift(newMsg);
+          localStorage.setItem('family_messages', JSON.stringify(savedMessages));
+          renderMessages();
+
+          contentInput.value = '';
+          alert('축하 메시지가 등록되었습니다! 🌸');
+        });
+      }
+
+      renderMessages();
+    }
+
+    /* 10. 네비게이션 부드러운 스크롤 & 모바일 메뉴 */
+    function initNavScroll() {
+      const menuToggle = document.getElementById('menu-toggle');
+      const navMenu = document.getElementById('nav-menu');
+
+      if (menuToggle && navMenu) {
+        menuToggle.addEventListener('click', () => {
+          navMenu.classList.toggle('open');
+        });
+
+        navMenu.querySelectorAll('a').forEach(link => {
+          link.addEventListener('click', () => {
+            navMenu.classList.remove('open');
+          });
+        });
+      }
+    }
+  </script>
+</body>
+</html>
